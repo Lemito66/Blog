@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
+from .forms import PostForm
 # Create your views here.
 """ def home(request):
     return render(request, 'home.html') """
@@ -24,6 +25,7 @@ class AddPostView(CreateView):
         Crea una vista para crear una vista
     '''
     model = Post
+    form_class = PostForm #Le pasamos el formulario que hemos creado
     template_name = 'add_post.html'
-    fields = '__all__' # Todos los campos
+    #fields = '__all__' # Todos los campos
     #fields = ('title', 'body') # Solo los campos que queremos
