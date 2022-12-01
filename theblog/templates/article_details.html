@@ -6,6 +6,7 @@
         {{ post.post_date }} - 
         <a href="{% url 'update_post' post.pk %}">(Editar Post)</a> - 
         <a href="{% url 'delete_post' post.pk %}">(Eliminar Post)</a>
+        
 </small><br/>
 <hr>
 <br/>
@@ -13,5 +14,4 @@
 
 <br><br>
 <a href="{% url 'home' %}" class="btn btn-secondary"> Atras </a>
-    
 {% endblock content %}
