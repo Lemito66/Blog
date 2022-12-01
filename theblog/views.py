@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post
 from .forms import PostForm, EditPostForm
+from django.urls import reverse_lazy
 # Create your views here.
 """ def home(request):
     return render(request, 'home.html') """
@@ -12,6 +13,8 @@ class HomeView(ListView):
     '''
     model = Post
     template_name = 'home.html'
+    #ordering = ['id']
+    ordering = ['-post_date'] #Ultima publicación primero
     
 class ArticleDetailView(DetailView):
     '''
@@ -38,3 +41,11 @@ class UpdatePostView(UpdateView):
     form_class = EditPostForm #Le pasamos el formulario que hemos creado
     template_name = 'update_post.html'
     #fields = ['title', 'title_tag', 'body']
+    
+class DeletePostView(DeleteView):
+    '''
+        Crea una vista para eliminar un post
+    '''
+    model = Post
+    template_name = 'delete_post.html'
+    success_url = reverse_lazy('home')

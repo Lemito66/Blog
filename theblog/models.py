@@ -3,6 +3,7 @@ from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from datetime import datetime, date
 # Create your models here.
 
 class Post(models.Model):
@@ -10,6 +11,7 @@ class Post(models.Model):
     title_tag = models.CharField(max_length = 255, verbose_name='Nombre de la etiqueta')
     author = models.ForeignKey(User, on_delete= models.CASCADE, verbose_name='Autor')
     body = models.TextField(verbose_name = 'Cuerpo')
+    post_date = models.DateField(auto_now_add=True, verbose_name='Fecha de publicación')
     
     def __str__(self):
         return f'{self.title} | {self.author}'
