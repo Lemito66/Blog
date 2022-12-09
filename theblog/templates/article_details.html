@@ -3,14 +3,16 @@
 {% block content %}
 <h1> {{ post.title}} </h1>
 <small> By: {{ post.author.first_name }} {{ post.author.last_name }} - 
-        {{ post.post_date }} - 
-        <a href="{% url 'update_post' post.pk %}">(Editar Post)</a> - 
-        <a href="{% url 'delete_post' post.pk %}">(Eliminar Post)</a>
-        
+        {{ post.post_date }} 
+        {% if user.is_authenticated %}
+                -<a href="{% url 'update_post' post.pk %}">(Editar Post)</a> - 
+                <a href="{% url 'delete_post' post.pk %}">(Eliminar Post)</a>
+        {% endif %}
 </small><br/>
 <hr>
 <br/>
 {{ post.body }}
+{% comment %} {{ post.body|safe }} {% endcomment %}
 
 <br><br>
 <a href="{% url 'home' %}" class="btn btn-secondary"> Atras </a>

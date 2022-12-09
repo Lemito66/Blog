@@ -1,5 +1,5 @@
 {% extends 'base.html' %} 
-    {% block title %}Crear un nuevo blog{% endblock %} 
+    {% block title %}Añadir Categoria{% endblock %} 
 {% block content %}
 {% if user.is_authenticated %}
     <h1>Añadir post</h1>
@@ -7,7 +7,7 @@
 
         <form method="post">
         {% csrf_token %} {{ form.as_p }}
-        <button class="btn btn-secondary">Post</button>
+        <button class="btn btn-secondary">Añadir Categoria</button>
 
         
         </form>

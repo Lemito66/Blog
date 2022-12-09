@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}Aditar Post{% endblock %}
+{% block title %}Editar Post{% endblock %}
 {% block content %}
+    {% if user.is_authenticated %}
+        <h1>Editar Post</h1>
 
-    <h1>Editar Post</h1>
-
-    <br />
+        <br />
 
         <form method="post">
             {% csrf_token %} 
@@ -12,4 +12,10 @@
             <button class="btn btn-secondary">Editar Post</button>
 
         </form>
+    {% else %}
+        <div class="alert alert-danger" role="alert">
+            No tienes permisos para editar este post
+        </div>
+        
+    {% endif %}
 {% endblock content %}

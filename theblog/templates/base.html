@@ -25,15 +25,29 @@
               <li class="nav-item">
                 <a class="nav-link {% if request.path == '/' %}active {% endif %} px-lg-4" aria-current="page" href="{% url 'home' %}">Home</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link {% if request.path == '/add_post/' %}active {% endif %} px-lg-4" href="{% url 'add_post' %}">Añadir Post</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {% if request.path == '/members/register/' %}active {% endif %} px-lg-4" href="{% url 'register' %}">Regístrate</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {% if request.path == '/members/login/' %}active {% endif %} px-lg-4" href="{% url 'login' %}">Iniciar Sesión</a>
-              </li>
+              
+              {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link {% if request.path == '/add_post/' %}active {% endif %} px-lg-4" href="{% url 'add_post' %}">Añadir Post</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link {% if request.path == '/add_category/' %}active {% endif %} px-lg-4" href="{% url 'add_category' %}">Añadir Categoría</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link {% if request.path == '/members/register/' %}active {% endif %} px-lg-4" href="{% url 'register' %}">Regístrate</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link {% if request.path == '/members/login/' %}active {% endif %} px-lg-4" href="{% url 'login' %}">Iniciar Sesión</a>
+                </li>
+              {% endif %}
+                
+              
+              
+              
               
             </ul>
             
