@@ -1,14 +1,22 @@
 {% extends 'base.html' %} 
     {% block title %}Iniciar Sesión{% endblock %} 
 {% block content %}
-
+<div class="shadow p-4 mb-5 bg-body rounded">
     <h1>Iniciar Sesión</h1>
     <br />
 
         <form method="post">
-        {% csrf_token %} {{ form.as_p }}
+        {% csrf_token %} 
+        {{ form.as_p }}
+        {% comment %} <div class="mb-3">
+            <input type="text" class="form-control" name="username" placeholder="Nombre de Usuario" required>
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+        </div> {% endcomment %}
         <button class="btn btn-secondary">Iniciar Sesión</button>
 
         
         </form>
+</div>
 {% endblock content %}

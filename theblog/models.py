@@ -7,7 +7,7 @@ from datetime import datetime, date
 # Create your models here.
 
 class Category(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, verbose_name='Nombre de la categoría')
     
     def __str__(self):
         return f'{self.name}'

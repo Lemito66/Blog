@@ -15,7 +15,24 @@ class HomeView(ListView):
     template_name = 'home.html'
     #ordering = ['id']
     ordering = ['-post_date'] #Ultima publicación primero
-    
+
+def quitar_tildes(s):
+    replacements = (
+        ("á", "a"),
+        ("é", "e"),
+        ("í", "i"),
+        ("ó", "o"),
+        ("ú", "u"),
+    )
+    for a, b in replacements:
+        s = s.replace(a, b).replace(a.upper(), b.upper())
+    return s
+
+def CategoryView(request, cats):
+    #cats = quitar_tildes(cats)
+    category_posts = Post.objects.filter(category=cats.replace('-', ' ')) # Filtramos los posts por categoría
+    return render(request, 'categories.html', {'cats':cats.title().replace('-', ' '), 'category_posts':category_posts}) # Pasamos los datos a la vista
+
 class ArticleDetailView(DetailView):
     '''
         Crea una vista para ver los detalles del post

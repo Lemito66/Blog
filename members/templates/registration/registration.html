@@ -1,14 +1,16 @@
 {% extends 'base.html' %} 
     {% block title %}Registrarse{% endblock %} 
 {% block content %}
+    <div class="shadow p-4 mb-5 bg-body rounded">
+        <h1>Registrarse</h1>
+        <br />
 
-    <h1>Registrarse</h1>
-    <br />
+            <form method="post">
+            {% csrf_token %} 
+            {{ form.as_p }}
+            <button class="btn btn-secondary">Registrarse</button>
 
-        <form method="post">
-        {% csrf_token %} {{ form.as_p }}
-        <button class="btn btn-secondary">Registrarse</button>
-
-        
-        </form>
+            
+            </form>
+    </div>
 {% endblock content %}
